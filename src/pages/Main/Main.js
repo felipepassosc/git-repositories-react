@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
-import { Container, Form, SubmitButton } from './styles';
+import { Container, Form, SubmitButton, List } from './styles';
 
 import api from '../../services/api'
 
@@ -65,11 +65,14 @@ class Main extends Component {
                                 )}
                         </SubmitButton>
                     </Form>
-                    {/* <ul>
-                        {repositories.map(repo => {
-                            <li>{repo}</li>
-                        })}
-                    </ul> */}
+                    <List>
+                        {repositories.map(repo => (
+                            <li key={repo.name}>
+                                <span>{repo.name}</span>
+                                <a href="">Detalhes</a>
+                            </li>
+                        ))}
+                    </List>
                 </Container>
             </>
         )
