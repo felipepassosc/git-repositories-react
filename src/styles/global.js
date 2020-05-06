@@ -13,7 +13,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background: #7159c1;
+        background: linear-gradient(to bottom right, rgb(243, 33, 33), rgb(151, 0, 58));
         -webkit-font-smoothing: antialiased !important;
     }
 
