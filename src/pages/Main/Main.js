@@ -6,7 +6,6 @@ function Main() {
     return (
     <Title error={false}>
         Main
-        <small>small</small>
     </Title>
     )
 }
