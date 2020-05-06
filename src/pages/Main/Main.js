@@ -11,8 +11,18 @@ class Main extends Component {
         repositories: [],
         loading: false
     }
+// carregar dados do localStorage
+    componentDidMount(){
+        const repositories = localStorage.getItem('repositories')
 
-// dados do localStorage
+        if (repositories) {
+            this.setState({
+                repositories: JSON.parse(repositories)
+            })
+        }
+    }
+// salvar dados do localStorage
+// componentDidUpdate - toda vez que atualizar, vai comparar o estado antigo com o novo, se for diferente, da um localStorage.setItem
     componentDidUpdate(_, prevState){
         const { repositories } = this.state
 
