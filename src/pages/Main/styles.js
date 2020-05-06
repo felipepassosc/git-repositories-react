@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 // cada arquivo css tem seu proprio escopo, pertence apenas aquele componente
 // controlar proproiedades css baseado em props que o componente recebe
 // encademento de estilos, acessar props do componente dentro do css
@@ -18,7 +18,7 @@ export const Container = styled.div`
         align-items: center
     }
     svg {
-        margin-right: 1px;
+        margin-right: 5px;
     }
 `;
 
@@ -36,9 +36,19 @@ export const Form = styled.form`
     }
 `;
 
-export const SubmitButton = styled.button.attrs({
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg)
+    }
+`;
+
+export const SubmitButton = styled.button.attrs(props => ({
     type: 'submit',
-})`
+    disabled: props.loading,
+}))`
     background: linear-gradient(to bottom right, rgb(243, 33, 33), rgb(151, 0, 58));
     border: 0;
     padding: 0 15px;
@@ -48,4 +58,17 @@ export const SubmitButton = styled.button.attrs({
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+
+    &[:disabled] {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    ${props =>
+        props.loading &&
+        css`
+        svg {
+            animation: ${rotate} 2s linear infinite;
+        }
+    `}
 `;
